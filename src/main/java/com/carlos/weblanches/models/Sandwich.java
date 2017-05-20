@@ -17,14 +17,14 @@ public class Sandwich {
     }
 
     public double getTotalCost() {
-        return totalIngredientsCouts() - totalDiscounts();
+        return totalIngredientsCosts() - totalDiscounts();
     }
 
     private Double totalDiscounts() {
         return discounts.stream().mapToDouble(value -> value).sum();
     }
 
-    public double totalIngredientsCouts() {
+    private double totalIngredientsCosts() {
         return ingredients.stream().mapToDouble(item -> item.getCost()).sum();
     }
 

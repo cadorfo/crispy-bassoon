@@ -4,13 +4,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.carlos.weblanches.models.SandwichEnum.*;
 
-/**
- * Created by carlos on 20/05/17.
- */
 public class SandwichTest {
 
     @Test
@@ -57,6 +53,6 @@ public class SandwichTest {
 
 
     private double calculateIngredientsCost(List<Ingredient> ingredients) {
-        return ingredients.stream().collect(Collectors.summingDouble(item -> item.getCost()));
+        return ingredients.stream().mapToDouble(item -> item.getCost()).sum();
     }
 }
