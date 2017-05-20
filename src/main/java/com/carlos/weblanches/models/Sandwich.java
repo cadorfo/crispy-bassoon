@@ -1,10 +1,15 @@
 package com.carlos.weblanches.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich {
 
+    private SandwichEnum sandwichEnum;
     private List<Double> discounts = new ArrayList<>();
     private List<Ingredient> ingredients;
 
@@ -12,6 +17,17 @@ public class Sandwich {
         this.ingredients = ingredients;
     }
 
+    public Sandwich(SandwichEnum sandwichEnum) {
+        this.ingredients = sandwichEnum.getIngredientList();
+        this.sandwichEnum = sandwichEnum;
+    }
+
+    @JsonIgnore
+    public String getName() {
+        return sandwichEnum.getName();
+    }
+
+    @JsonIgnore
     public List<Double> getDiscounts() {
         return discounts;
     }
@@ -20,6 +36,7 @@ public class Sandwich {
         return totalIngredientsCosts() - totalDiscounts();
     }
 
+    @JsonGetter
     private Double totalDiscounts() {
         return discounts.stream().mapToDouble(value -> value).sum();
     }
@@ -30,5 +47,9 @@ public class Sandwich {
 
     public List<Ingredient> getIngredients() {
         return ingredients;
+    }
+
+    public String getFormattedPrice() {
+        return NumberFormat.getCurrencyInstance().format(getTotalCost());
     }
 }

@@ -1,5 +1,8 @@
 package com.carlos.weblanches.models;
 
+
+import java.text.NumberFormat;
+
 public class Ingredient {
 
     private final IngredientEnum ingredientEnum;
@@ -18,6 +21,10 @@ public class Ingredient {
 
     public Double getCost() {
         return cost;
+    }
+
+    public String getFormattedPrice() {
+        return NumberFormat.getCurrencyInstance().format(cost);
     }
 
     public IngredientEnum getIngredientEnum() {

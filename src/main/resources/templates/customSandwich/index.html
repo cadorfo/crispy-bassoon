@@ -5,11 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
-          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+          href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
 </head>
 <body>
-
+<script src="/webjars/jquery/3.2.0/jquery.min.js"></script>
+<script src="/customSandwiche.js"></script>
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -27,14 +28,24 @@
 <div class="container">
 
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
         <h2>
-            <span th:text="'Message: ' + ${message}"></span>
-            <a href="/customSandwich/"> Faça seus próprio lanche! </a>
+            Faça seu próprio lanche
         </h2>
-        <ul th:each="sandwich : ${sandwiches}">
-            <li th:text="${sandwich.name} + ' ' + ${sandwich.formattedPrice}"></li>
+        <ul th:each="ingredient : ${ingredients}">
+            <li><span th:text="${ingredient.name} + ' ' + ${ingredient.formattedPrice}"></span>
+                <div class="btn" name="minus" th:value="${ingredient.ingredientEnum}"><i
+                        class="glyphicon glyphicon-minus"></i></div>
+                <input th:id="'counter-' + ${ingredient.ingredientEnum}" th:value="0"
+                       th:attr="ingredient-type=${ingredient.ingredientEnum}"/>
+                <div class="btn" name="plus" th:value="${ingredient.ingredientEnum}"><i
+                        class="glyphicon glyphicon-plus"></i></div>
+            </li>
         </ul>
+    </div>
+    <div class="col-md-12">
+        <div id="result">
+
+        </div>
     </div>
 
 </div>
