@@ -1,0 +1,18 @@
+version: "3.0"
+
+services:
+  nginx:
+    build: ./docker
+    image: ngnx
+    depends_on:
+      - app
+    ports:
+      - 80:80
+    restart: always
+  app:
+    build: .
+    image: weblanches
+    volumes:
+      - /tmp
+    ports:
+      - 8080:8080
