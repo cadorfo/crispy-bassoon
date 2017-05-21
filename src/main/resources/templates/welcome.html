@@ -32,8 +32,8 @@
             <span th:text="'Message: ' + ${message}"></span>
             <a href="/customSandwich/"> Faça seus próprio lanche! </a>
         </h2>
-        <ul th:each="sandwich : ${sandwiches}">
-            <li th:text="${sandwich.name} + ' ' + ${sandwich.formattedPrice}"></li>
+        <ul >
+        <li th:each="sandwich : ${sandwiches}" th:id="'id-'+ ${sandwich.sandwichEnum}" > <span name="name" th:text="${sandwich.name}"></span><span name="price" th:text="${sandwich.formattedPrice}"></span> </li>
         </ul>
     </div>
 

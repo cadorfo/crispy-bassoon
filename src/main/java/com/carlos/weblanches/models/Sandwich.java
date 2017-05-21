@@ -27,6 +27,8 @@ public class Sandwich {
         return sandwichEnum.getName();
     }
 
+    public SandwichEnum getSandwichEnum(){ return sandwichEnum;}
+
     @JsonIgnore
     public List<Double> getDiscounts() {
         return discounts;
