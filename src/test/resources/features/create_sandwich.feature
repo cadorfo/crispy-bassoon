@@ -56,4 +56,5 @@ Feature: Welcome page
       | 2   | hamburger |
       | 2   | cheese    |
       | 1   | egg       |
+      | 1   | lettuce   |
       | 1   | bacon     |
