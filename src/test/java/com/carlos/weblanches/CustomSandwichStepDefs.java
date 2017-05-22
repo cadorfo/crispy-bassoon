@@ -9,8 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -92,7 +90,7 @@ public class CustomSandwichStepDefs implements En {
     public Properties getProperties() {
         try {
             Properties properties = new Properties();
-            properties.load(Files.newBufferedReader(Paths.get("classpath:cucumber.properties")));
+            properties.load(getClass().getClassLoader().getResourceAsStream("cucumber.properties"));
             return properties;
         } catch (IOException e) {
             e.printStackTrace();

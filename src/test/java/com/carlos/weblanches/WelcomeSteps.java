@@ -10,8 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -59,7 +57,7 @@ public class WelcomeSteps implements En {
     public Properties getProperties() {
         try {
             Properties properties = new Properties();
-            properties.load(Files.newBufferedReader(Paths.get("classpath:cucumber.properties")));
+            properties.load(getClass().getClassLoader().getResourceAsStream("cucumber.properties"));
             return properties;
         } catch (IOException e) {
             e.printStackTrace();
