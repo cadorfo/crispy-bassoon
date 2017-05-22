@@ -1,5 +1,6 @@
 package com.carlos.weblanches.models;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class SandwichTest {
         ingredientList.add(IngredientEnum.HAMBURGER.getIngrediment());
         Sandwich sandwich = new Sandwich(ingredientList);
         double totalCost = calculateIngredientsCost(ingredientList);
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -24,7 +25,7 @@ public class SandwichTest {
 
         Sandwich sandwich = new Sandwich(XEGG.getIngredientList());
         double totalCost = calculateIngredientsCost(XEGG.getIngredientList());
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals(totalCost, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -32,7 +33,7 @@ public class SandwichTest {
 
         Sandwich sandwich = new Sandwich(XEGGBACON.getIngredientList());
         double totalCost = calculateIngredientsCost(XEGGBACON.getIngredientList());
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost , sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -40,7 +41,7 @@ public class SandwichTest {
 
         Sandwich sandwich = new Sandwich(XBACON.getIngredientList());
         double totalCost = calculateIngredientsCost(XBACON.getIngredientList());
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -48,7 +49,7 @@ public class SandwichTest {
 
         Sandwich sandwich = new Sandwich(XBURGER.getIngredientList());
         double totalCost = calculateIngredientsCost(XBURGER.getIngredientList());
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost , sandwich.getTotalCost(), 0.01);
     }
 
 

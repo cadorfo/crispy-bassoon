@@ -19,7 +19,7 @@ public class PromotionTest {
                 HAMBURGER.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         Assert.assertEquals( totalCost * 0.9, sandwich.getTotalCost(), 0.01);
     }
@@ -32,7 +32,7 @@ public class PromotionTest {
                 HAMBURGER.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         Assert.assertEquals(totalCost - (HAMBURGER.getIngrediment().getCost()), sandwich.getTotalCost(), 0.01);
     }
@@ -48,7 +48,7 @@ public class PromotionTest {
                 CHEESE.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         Assert.assertEquals(totalCost - (CHEESE.getIngrediment().getCost() * 2), sandwich.getTotalCost(), 0.01);
     }
@@ -65,7 +65,7 @@ public class PromotionTest {
                 HAMBURGER.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
         Assert.assertEquals(totalCost - discountValue, sandwich.getTotalCost(), 0.01);
@@ -83,7 +83,7 @@ public class PromotionTest {
                 LETTUCE.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
         Assert.assertEquals((totalCost - discountValue) * 0.9, sandwich.getTotalCost(), 0.01);
@@ -102,7 +102,7 @@ public class PromotionTest {
                 BACON.getIngrediment()
         );
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
         Assert.assertEquals((totalCost - discountValue), sandwich.getTotalCost(), 0.01);
@@ -114,7 +114,7 @@ public class PromotionTest {
 
         Sandwich sandwich = new Sandwich(XBURGER.getIngredientList());
         double totalCost = calculateIngredientsCost(XBURGER.getIngredientList());
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         Assert.assertEquals( totalCost , sandwich.getTotalCost(), 0.0);
     }
 

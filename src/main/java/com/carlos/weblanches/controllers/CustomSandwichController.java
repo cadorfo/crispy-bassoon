@@ -41,7 +41,7 @@ public class CustomSandwichController {
         });
 
         Sandwich sandwich = new Sandwich(ingredientList);
-        PromotionChain.createChain().execute(sandwich);
+        PromotionChain.getChain().execute(sandwich);
         return sandwich;
     }
 }
