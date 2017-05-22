@@ -1,7 +1,8 @@
-[![CircleCI](https://circleci.com/gh/cadorfo/crispy-bassoon.svg?style=svg)](https://circleci.com/gh/cadorfo/crispy-bassoon)
-# Crispy-Bassoon - WebLanches
 
-Requisitos
+# Crispy-Bassoon - WebLanches
+[![CircleCI](https://circleci.com/gh/cadorfo/crispy-bassoon.svg?style=svg)](https://circleci.com/gh/cadorfo/crispy-bassoon)
+
+### Requisitos
 - [Maven](https://maven.apache.org/install.html)
 - [Docker] (https://store.docker.com/editions/community/docker-ce-server-ubuntu) 
 - [Docker compose] (https://docs.docker.com/compose/install/)
@@ -44,4 +45,4 @@ mvn -Dtest=com.carlos.weblanches.CucumberJava test
 Antes de rodar os testes unitários altere arquivo: `src/test/resources/cucumber.properties`
 
 Altera a variável `url` para o servidor onde está deployada a aplicação junto com a porta e 
-altere a variável `driverAddress` para o caminho do driver do chrome
+altere a variável `driverAddress` para o caminho do driver selenium do chrome
