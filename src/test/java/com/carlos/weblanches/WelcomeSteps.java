@@ -1,28 +1,20 @@
 package com.carlos.weblanches;
 
-import com.carlos.weblanches.models.Ingredient;
-import com.carlos.weblanches.models.IngredientEnum;
 import com.carlos.weblanches.models.Sandwich;
 import com.carlos.weblanches.models.SandwichEnum;
 import cucumber.api.DataTable;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java8.En;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
+import java.util.Properties;
 
 /**
  * Created by carlos on 21/05/17.
@@ -34,9 +26,11 @@ public class WelcomeSteps implements En {
 
     public WelcomeSteps() {
         Given("^I go to weblanches website$", () -> {
-            System.setProperty("webdriver.chrome.driver", "/home/carlos/app/selenium/chromedriver");
-            driver = new ChromeDriver();
-            driver.navigate().to("http://localhost:8080");
+            String url = getProperties().getProperty("url");
+            String driverAddress = getProperties().getProperty("driverAddress");
+            System.setProperty("webdriver.chrome.driver", driverAddress);
+
+            driver.navigate().to(url);
 
         });
         When("I look at the menu",()-> {});
@@ -62,4 +56,14 @@ public class WelcomeSteps implements En {
         return result;
     }
 
+    public Properties getProperties() {
+        try {
+            Properties properties = new Properties();
+            properties.load(Files.newBufferedReader(Paths.get("classpath:cucumber.properties")));
+            return properties;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

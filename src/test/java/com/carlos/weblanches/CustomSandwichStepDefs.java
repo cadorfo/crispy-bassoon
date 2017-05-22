@@ -3,33 +3,34 @@ package com.carlos.weblanches;
 import com.carlos.weblanches.models.IngredientEnum;
 import cucumber.api.DataTable;
 import cucumber.api.java8.En;
-import org.junit.After;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
+import java.util.Properties;
 import java.util.stream.IntStream;
 
 public class CustomSandwichStepDefs implements En {
     ChromeDriver driver = null;
 
     public CustomSandwichStepDefs() {
+
         Given("^I am at the custom sandwich page$", () -> {
-            System.setProperty("webdriver.chrome.driver", "/home/carlos/app/selenium/chromedriver");
+            String url = getProperties().getProperty("url");
+            String driverAddress = getProperties().getProperty("driverAddress");
+            System.setProperty("webdriver.chrome.driver", driverAddress);
 
             driver = new ChromeDriver();
 
-            driver.navigate().to("http://localhost:8080/customSandwich/");
+            driver.navigate().to(url + "/customSandwich/");
 
         });
 
@@ -86,6 +87,17 @@ public class CustomSandwichStepDefs implements En {
         });
 
         return result;
+    }
+
+    public Properties getProperties() {
+        try {
+            Properties properties = new Properties();
+            properties.load(Files.newBufferedReader(Paths.get("classpath:cucumber.properties")));
+            return properties;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     private Double getCurrencyFromElement(WebElement element){
