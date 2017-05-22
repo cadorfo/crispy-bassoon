@@ -1,5 +1,5 @@
-# crispy-bassoon
-Simple sandwich store
+[![CircleCI](https://circleci.com/gh/cadorfo/crispy-bassoon.svg?style=svg)](https://circleci.com/gh/cadorfo/crispy-bassoon)
+# Crispy-Bassoon - WebLanches
 
 Requisitos
 - [Maven](https://maven.apache.org/install.html)
