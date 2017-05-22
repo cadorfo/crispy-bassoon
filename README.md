@@ -38,5 +38,10 @@ mvn test
 Para executar os teste de integração automatizados execute rode projeto com algum dos comandos mencionados anteriormente anteriores 
 
 ```
-mvn  -Dtest=com.carlos.weblanches.CucumberJava test
+mvn -Dtest=com.carlos.weblanches.CucumberJava test
 ```
+
+Antes de rodar os testes unitários altere arquivo: `src/test/resources/cucumber.properties`
+
+Altera a variável `url` para o servidor onde está deployada a aplicação junto com a porta e 
+altere a variável `driverAddress` para o caminho do driver do chrome

@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class WelcomeSteps implements En {
             String driverAddress = getProperties().getProperty("driverAddress");
             System.setProperty("webdriver.chrome.driver", driverAddress);
 
+            driver = new ChromeDriver();
             driver.navigate().to(url);
 
         });

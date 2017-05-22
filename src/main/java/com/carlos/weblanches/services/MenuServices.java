@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Component()
 public class MenuServices {
 
-    public List<Sandwich> listSandwitches() {
+    public List<Sandwich> listSandwiches() {
         return Arrays.stream(SandwichEnum.values())
                 .map(Sandwich::new)
                 .collect(Collectors.toList());

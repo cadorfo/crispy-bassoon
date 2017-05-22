@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <title>Weblanches</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css"
@@ -14,11 +14,11 @@
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Spring Boot</a>
+            <a class="navbar-brand" href="/">Weblanches</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/">Home</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
@@ -31,21 +31,37 @@
         <h2>
             Faça seu próprio lanche
         </h2>
-        <ul th:each="ingredient : ${ingredients}">
-            <li><span th:text="${ingredient.name} + ' ' + ${ingredient.formattedPrice}"></span>
-                <div class="btn" name="minus" th:value="${ingredient.ingredientEnum}"><i
-                        class="glyphicon glyphicon-minus"></i></div>
-                <input th:id="'counter-' + ${ingredient.ingredientEnum}" th:value="0"
-                       th:attr="ingredient-type=${ingredient.ingredientEnum}"/>
-                <div class="btn" name="plus" th:value="${ingredient.ingredientEnum}"><i
-                        class="glyphicon glyphicon-plus"></i></div>
-            </li>
-        </ul>
-    </div>
-    <div class="col-md-12">
-        <div id="result">
+        <table class="table">
+            <thead>
+                <td>Ingrediente</td>
+                <td>Preço unitário</td>
+                <td>Quantidade</td>
+            </thead>
+            <tbody>
+                <tr th:each="ingredient : ${ingredients}">
+                    <td><span th:text="${ingredient.name}" ></span></td>
+                    <td><span th:text="${ingredient.formattedPrice}" ></span></td>
+                    <td> <div class="btn" name="minus" th:value="${ingredient.ingredientEnum}"><i
+                            class="glyphicon glyphicon-minus"></i></div>
+                        <input th:id="'counter-' + ${ingredient.ingredientEnum}" th:value="0"
+                               th:attr="ingredient-type=${ingredient.ingredientEnum}"/>
+                        <div class="btn" name="plus" th:value="${ingredient.ingredientEnum}"><i
+                                class="glyphicon glyphicon-plus"></i></div></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>
+                        Total:
+                    </td>
+                    <td>
+                        <div class="right" id="result">
 
-        </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 
 </div>

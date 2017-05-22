@@ -1,6 +1,7 @@
 package com.carlos.weblanches.models;
 
 import com.carlos.weblanches.promotions.PromotionChain;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class PromotionTest {
         Sandwich sandwich = new Sandwich(ingredientList);
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
-        assert totalCost * 0.9 == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost * 0.9, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -33,7 +34,7 @@ public class PromotionTest {
         Sandwich sandwich = new Sandwich(ingredientList);
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
-        org.junit.Assert.assertEquals(totalCost - (HAMBURGER.getIngrediment().getCost()), sandwich.getTotalCost(), 0.01);
+        Assert.assertEquals(totalCost - (HAMBURGER.getIngrediment().getCost()), sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -49,7 +50,7 @@ public class PromotionTest {
         Sandwich sandwich = new Sandwich(ingredientList);
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
-        org.junit.Assert.assertEquals(totalCost - (CHEESE.getIngrediment().getCost() * 2), sandwich.getTotalCost(), 0.01);
+        Assert.assertEquals(totalCost - (CHEESE.getIngrediment().getCost() * 2), sandwich.getTotalCost(), 0.01);
     }
 
 
@@ -67,7 +68,7 @@ public class PromotionTest {
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
-        org.junit.Assert.assertEquals(totalCost - discountValue, sandwich.getTotalCost(), 0.01);
+        Assert.assertEquals(totalCost - discountValue, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -85,7 +86,7 @@ public class PromotionTest {
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
-        org.junit.Assert.assertEquals((totalCost - discountValue) * 0.9, sandwich.getTotalCost(), 0.01);
+        Assert.assertEquals((totalCost - discountValue) * 0.9, sandwich.getTotalCost(), 0.01);
     }
 
     @Test
@@ -104,7 +105,7 @@ public class PromotionTest {
         PromotionChain.createChain().execute(sandwich);
         double totalCost = calculateIngredientsCost(ingredientList);
         double discountValue = (CHEESE.getIngrediment().getCost() + HAMBURGER.getIngrediment().getCost());
-        org.junit.Assert.assertEquals((totalCost - discountValue), sandwich.getTotalCost(), 0.01);
+        Assert.assertEquals((totalCost - discountValue), sandwich.getTotalCost(), 0.01);
     }
 
 
@@ -114,7 +115,7 @@ public class PromotionTest {
         Sandwich sandwich = new Sandwich(XBURGER.getIngredientList());
         double totalCost = calculateIngredientsCost(XBURGER.getIngredientList());
         PromotionChain.createChain().execute(sandwich);
-        assert totalCost == sandwich.getTotalCost();
+        Assert.assertEquals( totalCost , sandwich.getTotalCost(), 0.0);
     }
 
 

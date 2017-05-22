@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
-@Controller()
+@Controller
 @RequestMapping("/customSandwich")
 public class CustomSandwichController {
 
@@ -27,7 +27,7 @@ public class CustomSandwichController {
     @RequestMapping("/")
     public String index(Map<String, Object> model) {
         model.put("ingredients", menu.listIngredients());
-        String brasil = "";
+
         return "customSandwich/index";
     }
 
